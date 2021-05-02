@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 8037 bytes
+Current configuration : 8025 bytes
 !
-! Last configuration change at 20:20:09 UTC Wed Apr 28 2021 by NETCONF
+! Last configuration change at 09:22:43 UTC Sun May 2 2021
 !
 version 16.12
 service timestamps debug datetime msec
