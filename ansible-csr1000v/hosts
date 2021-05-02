@@ -1,0 +1,3 @@
+#Enter the hosts or devices for Ansible playbooks
+
+CSR1kv ansible_user=steven ansible_password=ddadmin ansible_host=192.168.160.150

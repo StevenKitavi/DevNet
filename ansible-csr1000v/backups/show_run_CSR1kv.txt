@@ -1,0 +1,307 @@
+Building configuration...
+
+Current configuration : 8037 bytes
+!
+! Last configuration change at 20:20:09 UTC Wed Apr 28 2021 by NETCONF
+!
+version 16.12
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname C1000V
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+!
+!
+!
+!
+!
+!
+ip domain name boakenya.com
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice service voip
+ allow-connections sip to sip
+ supplementary-service media-renegotiate
+ sip
+  registrar server expires max 120 min 60
+!
+!
+!
+!
+!
+!
+voice register global
+ mode cme
+ source-address 192.168.160.150 port 5060
+ max-dn 1200
+ max-pool 475
+ auto-register
+ !
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-324069162
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-324069162
+ revocation-check none
+ rsakeypair TP-self-signed-324069162
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain TP-self-signed-324069162
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33323430 36393136 32301E17 0D323130 33303231 37303235 
+  315A170D 33303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3332 34303639 
+  31363230 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 
+  82010100 A59B3F51 6EC70E12 2090C3D4 2AF42150 EAC53E27 9C50CFC3 80161EC7 
+  F7D809AA E74A08FF 3DABE674 15E9C9E0 E5C2BA97 900E586E 4FE6637A F7EDF8C7 
+  4D8195CE 45380D1E 33CE4C39 702FE3FC 95933910 85DC3CBC 2BC6EAA8 EA118935 
+  0636306F ED92A722 7BAF3A2C 907B5CA1 105CF024 E31F44B8 9B2DBD2F 67F135CA 
+  33C5A364 AA4E818D 062F9CBF 06BF5F6B 61B59F41 DB7F79C9 161D3800 239D71F0 
+  D8E3B417 CB44C822 99D72E70 C448BBA4 D4467229 07651665 658625D1 326A9AE2 
+  2DED6389 9C0D78C6 7FD00119 5F5246EC 8C3A7BEC C97F9BE1 2E8A1E49 D8AB1773 
+  21CE6F2A C92A2BBD 9EE4CEBE F0C90A55 3CB5C9A4 E1033C37 9C3BE104 53F9A3C1 
+  44427CE1 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 
+  0603551D 23041830 168014C8 4ED5DE0B 299264EB 42D538F9 D6B65B06 78878F30 
+  1D060355 1D0E0416 0414C84E D5DE0B29 9264EB42 D538F9D6 B65B0678 878F300D 
+  06092A86 4886F70D 01010505 00038201 010076AC 9A8BE640 8333F4EB 03D3F4FC 
+  5AD7141F 361C18F5 F6744619 D223AE50 9A0DC47C 16504AA0 003B30A2 0A4F5D74 
+  422F512D 575BC7E8 BC545722 D0D01F22 FEB1A8DC D06C6CDE 2EB327EA 30FAD693 
+  4B0DF0BF 7BF22047 22A48292 563DC6E3 8DD2D075 62C2AEC9 CB338F9D B912D444 
+  B9CCEBC3 F83231E2 2ACE8994 44C6E22C FE6A553A 9487BA30 2250296C 83B089E4 
+  78E16142 A2D7C5C9 6F7629AB E67971D8 34AC036D BF76C940 07317DB1 3F282794 
+  AD02CBC6 7D1255C4 52C47F34 06A42D20 D0A1F429 E5D39786 0E0F4AA6 81D8B17D 
+  1BF6623E 019E5429 9EC5975E C7A6C8CA 81122229 6361C9C8 D3533ACF 8F6A3189 
+  CD153C65 31F3DD5B F125BDAA 758AFC49 F44E
+  	quit
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+!
+license udi pid CSR1000V sn 91TA71J93WZ
+license boot level ax
+diagnostic bootup level minimal
+memory free low-watermark processor 72301
+!
+
+et-analytics
+!
+spanning-tree extend system-id
+!
+username steven privilege 15 password 0 ddadmin
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback1
+ description My First Restconf Loopback
+ ip address 10.1.1.1 255.255.255.0
+ shutdown
+!
+interface Loopback2
+ description My Second RESTCONF loopback
+ ip address 10.2.2.1 255.255.255.0
+!
+interface VirtualPortGroup0
+ ip address 192.168.1.1 255.255.255.0
+ ip nat inside
+ ip access-group BLOCK-HTTP in
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet1
+ ip address dhcp
+ ip nat outside
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ ip address 192.168.56.101 255.255.255.0
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+iox
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip nat inside source list NAT-ACL interface GigabitEthernet1 overload
+ip ssh source-interface GigabitEthernet1
+ip ssh version 2
+!
+ip access-list extended BLOCK-HTTP
+ 10 deny   tcp any any eq www
+ 20 deny   tcp any any eq 443
+ 30 permit ip any any
+ip access-list extended NAT-ACL
+ 10 permit ip 192.168.1.0 0.0.0.255 any
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+telephony-service
+ max-dn 1200
+ ip source-address 192.168.160.150 port 2000
+ max-conferences 8 gain -6
+ transfer-system full-consult
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ privilege level 15
+ login local
+ transport input telnet ssh
+line vty 5 15
+ privilege level 15
+ login local
+ transport input telnet ssh
+ transport output telnet ssh
+!
+!
+!
+!
+!
+event manager applet config-check
+ event syslog pattern "SYS-5-CONFIG_I"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "guestshell run python /home/guestshell/dne-dna-code/intro-guestshell/intro-on-box-python/conf_check.py --syslog"
+ action 3.0 regexp "ERROR" "$_cli_result"
+ action 4.0 if $_regexp_result eq "1"
+ action 5.0  syslog msg "$_cli_result"
+ action 6.0 end
+!
+!
+telemetry ietf subscription 101
+ encoding encode-kvgpb
+ filter xpath /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds
+ stream yang-push
+ update-policy periodic 500
+ receiver ip address 192.168.160.1 57500 protocol grpc-tcp
+app-hosting appid guestshell
+ app-vnic gateway0 virtualportgroup 0 guest-interface 0
+  guest-ipaddress 192.168.1.2 netmask 255.255.255.0
+ name-server0 8.8.8.8
+netconf-yang
+restconf
+end
